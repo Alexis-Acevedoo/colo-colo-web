@@ -319,7 +319,7 @@ function nextMatchCard(m, info) {
     : "";
 
   return `<article class="card" id="next-card">
-    <h2><span>${live ? "En vivo" : "Próximo partido"}</span>${live ? `<span class="badge"><span class="dot"></span>En vivo</span>` : ""}</h2>
+    <h2><span>${live ? "Partido" : "Próximo partido"}</span>${live ? `<span class="badge"><span class="dot"></span>En vivo</span>` : ""}</h2>
     <div class="match-head">${teamBlock(m.home)}${center}${teamBlock(m.away)}</div>
     ${live
       ? `<div class="live-clock">${esc(info.clock || info.detail || "")}</div>${goals}`
