@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Colo Colo</title>
+  <meta name="description" content="Próximo partido, tabla y resultados de Colo Colo.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Colo Colo">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="https://a.espncdn.com/i/teamlogos/soccer/500/2688.png" alt="" width="28" height="28">
+      <span>Colo Colo</span>
+    </div>
+    <button id="refresh" class="icon-btn" aria-label="Actualizar">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+    </button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="home" aria-selected="true">Inicio</button>
+    <button role="tab" data-tab="table" aria-selected="false">Tabla</button>
+  </nav>
+
+  <main>
+    <section id="tab-home" class="tab-panel"></section>
+    <section id="tab-table" class="tab-panel" hidden></section>
+    <p id="status" class="status"></p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
