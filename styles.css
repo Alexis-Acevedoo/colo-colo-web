@@ -72,7 +72,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 16px 24px; }
 .score { font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; white-space: nowrap; }
 
 .when { text-align: center; margin: 14px 0 4px; }
-.when .date { font-weight: 700; font-size: 17px; text-transform: capitalize; }
+.when .date { font-weight: 700; font-size: 17px; }
 .when .countdown { color: var(--muted); font-size: 14px; }
 
 .details { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--line); }

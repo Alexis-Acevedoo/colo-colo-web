@@ -264,8 +264,9 @@ async function matchSummary(m) {
 
 const fmtDay = new Intl.DateTimeFormat("es-CL", { weekday: "long", day: "numeric", month: "long" });
 const fmtShort = new Intl.DateTimeFormat("es-CL", { weekday: "short", day: "numeric", month: "short" });
-const fmtTime = new Intl.DateTimeFormat("es-CL", { hour: "2-digit", minute: "2-digit" });
-const fmtStamp = new Intl.DateTimeFormat("es-CL", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+const fmtTime = new Intl.DateTimeFormat("es-CL", { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+const fmtStamp = new Intl.DateTimeFormat("es-CL", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const rtf = new Intl.RelativeTimeFormat("es", { numeric: "auto" });
 
 function relative(date) {
@@ -323,7 +324,7 @@ function nextMatchCard(m, info) {
     ${live
       ? `<div class="live-clock">${esc(info.clock || info.detail || "")}</div>${goals}`
       : `<div class="when">
-          <div class="date">${esc(fmtDay.format(d))}</div>
+          <div class="date">${esc(cap(fmtDay.format(d)))}</div>
           <div class="countdown">${m.timeConfirmed ? `${fmtTime.format(d)} h · ${esc(relative(d))}` : `Hora por confirmar · ${esc(relative(d))}`}</div>
         </div>`}
     <ul class="details">${rows.map(([k, v]) => `<li><span>${esc(k)}</span><span>${esc(v)}</span></li>`).join("")}</ul>
@@ -445,7 +446,7 @@ function renderTable(table) {
   const race = raceData(table);
   if (!race) { $table.innerHTML = `<article class="card"><p class="empty">Tabla no disponible.</p></article>`; return; }
   const { rows, leader, me } = race;
-  const contenders = rows.filter((r) => r.max >= leader.points);
+  const contenders = rows.filter((r) => r.max >= leader.points || r.rank <= 3);
   const ref = me || leader;
 
   const raceCard = `<article class="card"><h2>Carrera por el título</h2>
@@ -461,7 +462,7 @@ function renderTable(table) {
         </tr>`;
       }).join("")}</tbody>
     </table></div>
-    <p class="sub" style="margin:10px 0 0">Equipos que todavía pueden alcanzar al líder. "Máx." = puntos si ganan todo lo que les queda (${race.total} fechas en total).</p>
+    <p class="sub" style="margin:10px 0 0">Los 3 primeros y todo equipo que aún puede alcanzar al líder. "Máx." = puntos si ganan todo lo que les queda (${race.total} fechas en total).</p>
   </article>`;
 
   const fullCard = `<article class="card"><h2>Liga de Primera</h2>
